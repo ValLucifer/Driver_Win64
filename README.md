@@ -5,7 +5,7 @@ windows模组驱动
 windows driver提供indemind模组产品的驱动开发包，包含include文件和lib文件。支持windows 64位系统，测试于windows10、USB3.0环境下
 #### 使用示例  
 ~~~
-#include "usbdriver.h"
+#include "DriverInterface.h"
 
 void Test_CameraCallbackFunction(cameraData* data) {
     std::cout << data->_timeStamp << std::endl;
@@ -22,6 +22,7 @@ int main(){
     unsigned char* pParams = new unsigned char[FLASH_MAX_SIZE];
     size_t len = FLASH_MAX_SIZE;
 
+    //以指定频率和分辨率打开模组
     usbdriver->Open(1000, 200, RESOLUTION_640);
 
     //获取标定参数
@@ -32,6 +33,7 @@ int main(){
     usbdriver->SetCameraCallback(Test_CameraCallbackFunction);
 
     Sleep(30 * 60 * 24*1000);
-	usbdriver->Close();
+    //关闭模组
+    usbdriver->Close();
 }
 ~~~
