@@ -17,7 +17,7 @@ void Test_CameraCallbackFunction(cameraData* data) {
 }
 
 int main(){
-    CModuleDriver* usbdriver = (CModuleDriver*)DriverFactory();
+    IDriverInterface* usbdriver = DriverFactory();
     int version = -1;
     unsigned char* pParams = new unsigned char[FLASH_MAX_SIZE];
     size_t len = FLASH_MAX_SIZE;
